@@ -74,7 +74,10 @@ export default function About() {
 
                         <p className="text-gray-400 text-sm sm:text-base lg:text-lg mb-8 leading-relaxed">
                             My work doesn&apos;t stop at development. As a{" "}
-                            <span className="text-white font-medium">freelance SEO consultant</span>, I focus on conversion-ready solutions that bring real results, not just a good-looking site. Whether you need a new{" "}
+                            <Link href="/best-digital-marketer-in-kerala" className="text-white hover:text-primary font-medium underline decoration-white/20 hover:decoration-primary underline-offset-2 transition-colors">
+                                digital marketing consultant
+                            </Link>
+                            , I focus on conversion-ready solutions that bring real results, not just a good-looking site. Whether you need a new{" "}
                             <Link href="/portfolio" className="text-primary hover:text-primary/80 underline decoration-primary/30 underline-offset-2 transition-colors">
                                 professional website
                             </Link>{" "}

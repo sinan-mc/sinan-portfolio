@@ -42,6 +42,7 @@ const quickLinks = [
 const services = [
     { name: "Web Dev", href: "/#services" },
     { name: "SEO", href: "/#services" },
+    { name: "Digital Marketing", href: "/best-digital-marketer-in-kerala" },
     { name: "SMM", href: "/#services" },
     { name: "SEM", href: "/#services" },
     { name: "AI Automation", href: "/#services" },

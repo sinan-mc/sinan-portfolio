@@ -22,18 +22,26 @@ export default function ContactClient() {
         const form = e.currentTarget;
         const formData = new FormData(form);
 
-        try {
-            const { collection, addDoc, serverTimestamp } = await import("firebase/firestore");
-            const { db } = await import("@/lib/firebase");
+        const payload = {
+            name: formData.get("name")?.toString().trim(),
+            email: formData.get("email")?.toString().trim(),
+            phone: formData.get("phone")?.toString().trim(),
+            service: formData.get("service")?.toString(),
+            message: formData.get("message")?.toString().trim(),
+        };
 
-            await addDoc(collection(db, "contacts"), {
-                name: formData.get("name"),
-                email: formData.get("email"),
-                phone: formData.get("phone"),
-                service: formData.get("service"),
-                message: formData.get("message"),
-                createdAt: serverTimestamp()
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
             });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(data.error || "Failed to send message.");
+            }
 
             toast.success("Message sent successfully!", {
                 style: {
@@ -48,9 +56,10 @@ export default function ContactClient() {
             });
             form.reset();
             setIsSuccess(true);
-        } catch (error) {
+        } catch (error: unknown) {
             console.error("Error sending message: ", error);
-            toast.error("Failed to send message.", {
+            const errorMessage = error instanceof Error ? error.message : "Failed to send message.";
+            toast.error(errorMessage, {
                 style: {
                     background: '#111',
                     color: '#fff',

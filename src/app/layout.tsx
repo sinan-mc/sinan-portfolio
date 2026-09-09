@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import GlobalProviders from "@/components/layout/GlobalProviders";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import Script from "next/script";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
 
 const inter = Inter({

@@ -13,6 +13,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         {
+            url: `${baseUrl}/best-digital-marketer-in-kerala`,
+            lastModified: new Date(),
+            changeFrequency: "weekly",
+            priority: 0.95,
+        },
+        {
             url: `${baseUrl}/about`,
             lastModified: new Date(),
             changeFrequency: "monthly",

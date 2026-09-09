@@ -16,6 +16,22 @@ const nextConfig: NextConfig = {
     poweredByHeader: false,
     compress: true,
     reactStrictMode: true,
+    async rewrites() {
+        return [
+            {
+                source: "/landing",
+                destination: "/best-digital-marketer-in-kerala",
+            },
+            {
+                source: "/ads",
+                destination: "/best-digital-marketer-in-kerala",
+            },
+            {
+                source: "/digital-marketing",
+                destination: "/best-digital-marketer-in-kerala",
+            },
+        ];
+    },
 };
 
 const analyzer = withBundleAnalyzer({
