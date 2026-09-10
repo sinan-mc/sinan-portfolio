@@ -156,3 +156,105 @@ export async function sendUserConfirmationEmail(data: SendContactEmailParams) {
         html,
     });
 }
+
+export interface SendChatbotLeadEmailParams {
+    name: string;
+    phone: string;
+    service: string;
+}
+
+export async function sendChatbotLeadNotificationEmail(data: SendChatbotLeadEmailParams) {
+    const user = process.env.EMAIL_USER || "sinanmc46@gmail.com";
+    const pass = process.env.EMAIL_PASS ? process.env.EMAIL_PASS.replace(/\s+/g, "") : "";
+
+    if (!pass) {
+        console.warn("EMAIL_PASS is not configured. Skipping chatbot email notification.");
+        return;
+    }
+
+    const transporter = getTransporter();
+    const recipient = process.env.CONTACT_EMAIL || user;
+    const sender = user;
+
+    const formattedDate = new Date().toLocaleString("en-IN", {
+        timeZone: "Asia/Kolkata",
+        dateStyle: "medium",
+        timeStyle: "short",
+    });
+
+    const cleanPhone = data.phone.replace(/[^0-9+]/g, "");
+    const waPhone = cleanPhone.startsWith("+")
+        ? cleanPhone.slice(1)
+        : (cleanPhone.length === 10 ? `91${cleanPhone}` : cleanPhone);
+    const waLink = `https://wa.me/${waPhone}?text=Hi%20${encodeURIComponent(data.name)},%20thank%20you%20for%20reaching%20out%20to%20Sinan%20MC`;
+
+    const html = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #0d0d0d; color: #f3f4f6; margin: 0; padding: 20px; }
+            .container { max-width: 600px; margin: 0 auto; background: #141414; border-radius: 16px; border: 1px solid #262626; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+            .header { background: linear-gradient(135deg, #1f1f1f, #0d0d0d); padding: 28px 24px; border-bottom: 2px solid #FFD700; }
+            .header h1 { margin: 0; color: #FFD700; font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+            .header p { margin: 6px 0 0; color: #9ca3af; font-size: 13px; }
+            .content { padding: 24px; }
+            .info-grid { margin-bottom: 24px; }
+            .info-row { display: flex; padding: 12px 0; border-bottom: 1px solid #222; }
+            .label { width: 130px; font-weight: 600; color: #9ca3af; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; }
+            .value { flex: 1; color: #ffffff; font-size: 14px; word-break: break-word; }
+            .value a { color: #FFD700; text-decoration: none; }
+            .cta-box { text-align: center; margin: 24px 0 12px; }
+            .cta-btn { display: inline-block; padding: 12px 24px; background: #25D366; color: #ffffff; font-weight: 700; border-radius: 8px; text-decoration: none; margin: 6px; }
+            .call-btn { display: inline-block; padding: 12px 24px; background: #FFD700; color: #000000; font-weight: 700; border-radius: 8px; text-decoration: none; margin: 6px; }
+            .footer { padding: 16px 24px; background: #0f0f0f; border-top: 1px solid #1f1f1f; text-align: center; font-size: 12px; color: #6b7280; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>🤖 New Chatbot Enquiry</h1>
+                <p>Captured via DigiBot on your website &bull; ${formattedDate} IST</p>
+            </div>
+            <div class="content">
+                <div class="info-grid">
+                    <div class="info-row">
+                        <span class="label">Name:</span>
+                        <span class="value"><strong>${data.name}</strong></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Mobile No:</span>
+                        <span class="value"><a href="tel:${data.phone}"><strong>${data.phone}</strong></a></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Service:</span>
+                        <span class="value"><strong style="color: #FFD700;">${data.service}</strong></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Source:</span>
+                        <span class="value">Website AI Chatbot</span>
+                    </div>
+                </div>
+
+                <div class="cta-box">
+                    <a href="tel:${data.phone}" class="call-btn">📞 Call Lead</a>
+                    <a href="${waLink}" class="cta-btn">💬 Chat on WhatsApp</a>
+                </div>
+            </div>
+            <div class="footer">
+                Fast response reminder: Calling or messaging on WhatsApp within 15 minutes yields the highest lead conversion.
+            </div>
+        </div>
+    </body>
+    </html>
+    `;
+
+    return transporter.sendMail({
+        from: `"DigiBot AI Lead" <${sender}>`,
+        to: recipient,
+        subject: `🤖 New Chatbot Lead: ${data.name} - [${data.service}]`,
+        text: `New Chatbot Lead:\n\nName: ${data.name}\nMobile No: ${data.phone}\nService: ${data.service}\n\nCall: tel:${data.phone}\nWhatsApp: ${waLink}`,
+        html,
+    });
+}

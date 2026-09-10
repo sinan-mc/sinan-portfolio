@@ -29,10 +29,10 @@ export default function GlobalProviders({ children }: { children: React.ReactNod
     const [loadChatbot, setLoadChatbot] = useState(false);
 
     useEffect(() => {
-        if (isLandingRoute) return;
-        const timer = setTimeout(() => setLoadChatbot(true), 5000);
+        if (isAdminRoute) return;
+        const timer = setTimeout(() => setLoadChatbot(true), isLandingRoute ? 1500 : 4000);
         return () => clearTimeout(timer);
-    }, [isLandingRoute]);
+    }, [isAdminRoute, isLandingRoute]);
 
     return (
         <LazyMotion features={domAnimation}>
@@ -41,7 +41,7 @@ export default function GlobalProviders({ children }: { children: React.ReactNod
             {!isCustomLayout && <MouseFollower />}
             {children}
             {!isCustomLayout && <Footer />}
-            {loadChatbot && !isCustomLayout && <Chatbot />}
+            {!isAdminRoute && loadChatbot && <Chatbot />}
         </LazyMotion>
     );
 }

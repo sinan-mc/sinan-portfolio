@@ -2,22 +2,20 @@ import { NextResponse } from "next/server";
 import { Groq } from "groq-sdk";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import { sendChatbotLeadNotificationEmail } from "@/lib/mail";
 
 // ─── Groq client (used ONLY for post-lead-capture general conversation) ───────
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 // ─── Fixed lead-capture messages ─────────────────────────────────────────────
-const MSG_GREETING =
-  "Hi! I'm DigiBot, an AI assistant. How can I help you today? Are you looking for web development, SEO, or digital marketing services?";
+const MSG_GREETING = "Hey there! 👋 How can I help you today?";
 const MSG_ASK_NAME = "What is your name?";
-const MSG_ASK_PHONE = "Please provide your phone number.";
-const MSG_ASK_EMAIL = "Please provide your email address.";
+const MSG_ASK_PHONE = "Please provide your mobile number.";
 const MSG_ASK_SERVICE =
-  "Which service are you looking for? (Web Development, SEO, or Digital Marketing)";
-const MSG_INVALID_PHONE = "Please provide a valid phone number.";
-const MSG_INVALID_EMAIL = "Please provide a valid email address.";
+  "Which service or package are you looking for? (Web Development, SEO, Digital Marketing, Graphic Design, Social Media, AI Automation, or Complete Package)";
+const MSG_INVALID_PHONE = "Please provide a valid mobile number.";
 const MSG_INVALID_SERVICE =
-  "Please choose Web Development, SEO, or Digital Marketing.";
+  "Please choose or specify a service or package (e.g. Web Development, SEO, Graphic Design, Digital Marketing, or Complete Package).";
 const MSG_FALLBACK = "I'm sorry, something went wrong. Please try again.";
 
 // ─── Lead capture states ──────────────────────────────────────────────────────
@@ -25,7 +23,6 @@ type LeadState =
   | "WAITING_FOR_INITIAL_REPLY"
   | "WAITING_FOR_NAME"
   | "WAITING_FOR_PHONE"
-  | "WAITING_FOR_EMAIL"
   | "WAITING_FOR_SERVICE"
   | "LEAD_COMPLETED";
 
@@ -35,15 +32,20 @@ function isValidPhone(value: string): boolean {
   return /^\d{7,15}$/.test(digits);
 }
 
-function isValidEmail(value: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
-}
-
 function normalizeService(value: string): string | null {
   const v = value.toLowerCase().trim();
-  if (/\b(web|website|web\s*dev(elopment)?)\b/.test(v)) return "Web Development";
-  if (/\b(seo|search\s*engine\s*optim(ization|isation)?)\b/.test(v)) return "SEO";
-  if (/\b(digital\s*marketing|marketing)\b/.test(v)) return "Digital Marketing";
+  if (/\b(graphic(s)?|poster|logo|banner|branding|creative)\b/.test(v)) return "Graphic Design & Branding";
+  if (/\b(web|website|web\s*dev(elopment)?|frontend|fullstack)\b/.test(v)) return "Web Development";
+  if (/\b(seo|search\s*engine|ranking|google\s*rank)\b/.test(v)) return "SEO";
+  if (/\b(social\s*media|smm|instagram|facebook)\b/.test(v)) return "Social Media Marketing";
+  if (/\b(digital\s*marketing|sem|google\s*ads|ads|adwords|ppc)\b/.test(v)) return "Digital Marketing";
+  if (/\b(ai|automation|chatbot|workflows)\b/.test(v)) return "AI Automation";
+  if (/\b(package|combo|growth|all(\s*in\s*one)?|everything|complete)\b/.test(v)) return "Complete Growth Package";
+
+  // Fallback: accept custom input if it's descriptive (at least 3 characters with letters)
+  if (v.length >= 3 && /[a-zA-Z]/.test(v)) {
+    return value.trim();
+  }
   return null;
 }
 
@@ -59,7 +61,6 @@ function inferLeadState(messages: Message[]) {
   let state: LeadState = "WAITING_FOR_INITIAL_REPLY";
   let name = "";
   let phone = "";
-  let email = "";
   let service = "";
 
   let stateBeforeLast: LeadState = "WAITING_FOR_INITIAL_REPLY";
@@ -86,14 +87,6 @@ function inferLeadState(messages: Message[]) {
     if (state === "WAITING_FOR_PHONE") {
       if (isValidPhone(value)) {
         phone = value;
-        state = "WAITING_FOR_EMAIL";
-      }
-      continue;
-    }
-
-    if (state === "WAITING_FOR_EMAIL") {
-      if (isValidEmail(value)) {
-        email = value;
         state = "WAITING_FOR_SERVICE";
       }
       continue;
@@ -126,7 +119,6 @@ function inferLeadState(messages: Message[]) {
     stateBeforeLast,
     name,
     phone,
-    email,
     service,
   };
 }
@@ -135,7 +127,7 @@ function inferLeadState(messages: Message[]) {
 const POST_LEAD_SYSTEM_PROMPT = `
 You are DigiBot, the professional AI assistant of Sinan MC Malappuram, Freelance Web Developer and SEO Specialist.
 
-The user's contact details have already been collected and saved. Do NOT ask for name, phone, email, or service again.
+The user's contact details have already been collected and saved. Do NOT ask for name, mobile number, or service again.
 Sinan MC will contact the user shortly to discuss details, including pricing.
 
 CRITICAL PRICING RULES (MUST STRICTLY FOLLOW):
@@ -267,7 +259,7 @@ export async function POST(req: Request) {
     const messages: Message[] = body.messages || [];
 
     // ── Infer current state from conversation history ──
-    const { state, stateBeforeLast, name, phone, email, service } =
+    const { state, stateBeforeLast, name, phone, service } =
       inferLeadState(messages);
 
     const userMessages = messages
@@ -307,17 +299,6 @@ export async function POST(req: Request) {
       });
     }
 
-    if (state === "WAITING_FOR_EMAIL") {
-      if (stateBeforeLast === "WAITING_FOR_EMAIL") {
-        return NextResponse.json({
-          message: { role: "assistant", content: MSG_INVALID_EMAIL },
-        });
-      }
-      return NextResponse.json({
-        message: { role: "assistant", content: MSG_ASK_EMAIL },
-      });
-    }
-
     if (state === "WAITING_FOR_SERVICE") {
       if (stateBeforeLast === "WAITING_FOR_SERVICE") {
         return NextResponse.json({
@@ -336,7 +317,6 @@ export async function POST(req: Request) {
           await addDoc(collection(db, "chat_leads"), {
             name,
             phone,
-            email,
             service,
             status: "new",
             source: "chatbot_ai",
@@ -351,6 +331,17 @@ export async function POST(req: Request) {
                 "I'm sorry, I encountered an error while saving your details. Please try again later.",
             },
           });
+        }
+
+        // Send instant email notification to mailbox
+        try {
+          await sendChatbotLeadNotificationEmail({
+            name,
+            phone,
+            service,
+          });
+        } catch (emailErr) {
+          console.error("Failed to send chatbot lead email notification:", emailErr);
         }
 
         return NextResponse.json({

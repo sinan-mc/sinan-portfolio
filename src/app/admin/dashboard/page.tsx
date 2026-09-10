@@ -21,7 +21,7 @@ type Contact = {
 type ChatLead = {
     id: string;
     name: string;
-    email: string;
+    email?: string;
     phone: string;
     service: string;
     status: string;
@@ -174,8 +174,12 @@ export default function AdminDashboard() {
                                     <td className="px-6 py-4 font-medium text-white">{item.name}</td>
                                     <td className="px-6 py-4">
                                         <div className="flex flex-col gap-1 text-gray-300">
-                                            <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-gray-400" />{item.email}</span>
-                                            <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-gray-400" />{item.phone}</span>
+                                            {item.email && (
+                                                <span className="flex items-center gap-1.5"><Mail className="w-3.5 h-3.5 text-gray-400" />{item.email}</span>
+                                            )}
+                                            {item.phone && (
+                                                <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-gray-400" />{item.phone}</span>
+                                            )}
                                         </div>
                                     </td>
                                     <td className="px-6 py-4">
@@ -249,14 +253,18 @@ export default function AdminDashboard() {
                             </div>
 
                             <div className="space-y-1.5 pt-1">
-                                <a href={`mailto:${item.email}`} className="flex items-center gap-2 text-sm text-gray-300 hover:text-white w-fit">
-                                    <Mail className="w-4 h-4 text-gray-400" />
-                                    {item.email}
-                                </a>
-                                <a href={`tel:${item.phone}`} className="flex items-center gap-2 text-sm text-gray-300 hover:text-white w-fit">
-                                    <Phone className="w-4 h-4 text-gray-400" />
-                                    {item.phone}
-                                </a>
+                                {item.email && (
+                                    <a href={`mailto:${item.email}`} className="flex items-center gap-2 text-sm text-gray-300 hover:text-white w-fit">
+                                        <Mail className="w-4 h-4 text-gray-400" />
+                                        {item.email}
+                                    </a>
+                                )}
+                                {item.phone && (
+                                    <a href={`tel:${item.phone}`} className="flex items-center gap-2 text-sm text-gray-300 hover:text-white w-fit">
+                                        <Phone className="w-4 h-4 text-gray-400" />
+                                        {item.phone}
+                                    </a>
+                                )}
                             </div>
 
                             <div className="pt-2">
