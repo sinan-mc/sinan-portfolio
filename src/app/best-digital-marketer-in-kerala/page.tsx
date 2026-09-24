@@ -2,9 +2,24 @@ import type { Metadata } from "next";
 import LandingClient from "./LandingClient";
 
 export const metadata: Metadata = {
-    title: "Best Digital Marketer in Kerala | Web Developer & SEO — Sinan MC",
+    title: {
+        absolute: "Best Digital Marketer in Kerala | Web Developer & SEO — Sinan MC",
+    },
     description:
-        "Looking for the best digital marketer in Kerala? Sinan MC builds fast modern websites, ranks businesses on Google search, and manages high-return ad campaigns.",
+        "Sinan MC is the best digital marketer in Kerala and freelance web developer. Providing Google SEO rankings, fast Next.js websites, and high-ROI digital marketing.",
+    keywords: [
+        "Best Digital Marketer in Kerala",
+        "Digital Marketer in Kerala",
+        "Freelance Digital Marketer Kerala",
+        "Best Freelance Web Developer in Kerala",
+        "SEO Specialist Kerala",
+        "Web Developer Kerala",
+        "Digital Marketing Services Kerala",
+        "Sinan MC",
+        "Sinan MC Malappuram",
+        "Local SEO Malappuram",
+        "Google Ads Specialist Kerala",
+    ],
     alternates: {
         canonical: "https://sinanmcmalappuram.in/best-digital-marketer-in-kerala",
     },
@@ -13,12 +28,12 @@ export const metadata: Metadata = {
         url: "https://sinanmcmalappuram.in/best-digital-marketer-in-kerala",
         title: "Best Digital Marketer in Kerala | Web Developer & SEO — Sinan MC",
         description:
-            "Looking for the best digital marketer in Kerala? Sinan MC builds fast modern websites, ranks businesses on Google search, and manages high-return ad campaigns.",
+            "Sinan MC is the best digital marketer in Kerala and freelance web developer. Providing Google SEO rankings, fast Next.js websites, and high-ROI digital marketing.",
         siteName: "Sinan MC",
         locale: "en_IN",
         images: [
             {
-                url: "/freelance-web-developer-SEO-specialist-Malappuram.webp",
+                url: "https://sinanmcmalappuram.in/freelance-web-developer-SEO-specialist-Malappuram.webp",
                 width: 1200,
                 height: 630,
                 alt: "Sinan MC — Best Digital Marketer in Kerala and Web Developer",
@@ -29,13 +44,20 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Best Digital Marketer in Kerala | Web Developer & SEO — Sinan MC",
         description:
-            "Looking for the best digital marketer in Kerala? Sinan MC builds fast modern websites, ranks businesses on Google search, and manages high-return ad campaigns.",
+            "Sinan MC is the best digital marketer in Kerala and freelance web developer. Providing Google SEO rankings, fast Next.js websites, and high-ROI digital marketing.",
         creator: "@mc_sinan3229",
-        images: ["/freelance-web-developer-SEO-specialist-Malappuram.webp"],
+        images: ["https://sinanmcmalappuram.in/freelance-web-developer-SEO-specialist-Malappuram.webp"],
     },
     robots: {
         index: true,
         follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+        },
     },
 };
 
@@ -47,20 +69,30 @@ const personSchema = {
     name: "Sinan MC",
     givenName: "Sinan",
     familyName: "MC",
-    jobTitle: "Freelance Digital Marketer & Web Developer",
+    jobTitle: "Best Digital Marketer in Kerala & Web Developer",
     description:
-        "Sinan MC is an independent digital marketer and web developer in Kerala providing SEO, high-performance Next.js web development, and digital marketing services.",
+        "Sinan MC is recognized as the best digital marketer in Kerala and freelance web developer, helping businesses grow through SEO, Next.js web development, and Google Ads.",
     url: "https://sinanmcmalappuram.in",
     image: "https://sinanmcmalappuram.in/freelance-web-developer-SEO-specialist-Malappuram.webp",
     telephone: "+917510477475",
     email: "sinanmc46@gmail.com",
     address: {
         "@type": "PostalAddress",
+        streetAddress: "Tirur",
         addressLocality: "Malappuram",
         addressRegion: "Kerala",
         addressCountry: "IN",
         postalCode: "676101",
     },
+    knowsAbout: [
+        "Digital Marketing",
+        "Search Engine Optimization (SEO)",
+        "Local SEO",
+        "Web Development",
+        "Next.js",
+        "Google Ads",
+        "Conversion Rate Optimization",
+    ],
     alumniOf: [
         {
             "@type": "EducationalOrganization",
@@ -86,7 +118,7 @@ const professionalServiceSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": "https://sinanmcmalappuram.in/#business",
-    name: "Sinan MC — Digital Marketing & Web Development Services",
+    name: "Sinan MC — Best Digital Marketer & Web Developer in Kerala",
     url: "https://sinanmcmalappuram.in/best-digital-marketer-in-kerala",
     telephone: "+917510477475",
     image: "https://sinanmcmalappuram.in/freelance-web-developer-SEO-specialist-Malappuram.webp",
@@ -110,11 +142,22 @@ const professionalServiceSchema = {
         longitude: 76.0291969,
     },
     hasMap: "https://www.google.com/maps/place/Sinan+MC+Malappuram/@10.8942876,76.0291969,17z",
+    openingHoursSpecification: [
+        {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            opens: "09:00",
+            closes: "19:00",
+        },
+    ],
     areaServed: [
         { "@type": "City", name: "Malappuram" },
         { "@type": "City", name: "Tirur" },
         { "@type": "City", name: "Kozhikode" },
         { "@type": "City", name: "Kochi" },
+        { "@type": "City", name: "Kannur" },
+        { "@type": "City", name: "Thrissur" },
+        { "@type": "City", name: "Kottakkal" },
         { "@type": "State", name: "Kerala" },
         { "@type": "Country", name: "India" },
     ],
@@ -204,7 +247,7 @@ const breadcrumbSchema = {
         {
             "@type": "ListItem",
             position: 2,
-            name: "Digital Marketing & Web Development",
+            name: "Best Digital Marketer in Kerala",
             item: "https://sinanmcmalappuram.in/best-digital-marketer-in-kerala",
         },
     ],
