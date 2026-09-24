@@ -3,7 +3,7 @@ import LandingClient from "./LandingClient";
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Best Digital Marketer in Kerala | Web Developer & SEO — Sinan MC",
+        absolute: "Sinan MC | Best Digital Marketer in Kerala | Web Developer & SEO",
     },
     description:
         "Sinan MC is the best digital marketer in Kerala and freelance web developer. Providing Google SEO rankings, fast Next.js websites, and high-ROI digital marketing.",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     openGraph: {
         type: "website",
         url: "https://sinanmcmalappuram.in/best-digital-marketer-in-kerala",
-        title: "Best Digital Marketer in Kerala | Web Developer & SEO — Sinan MC",
+        title: "Sinan MC | Best Digital Marketer in Kerala | Web Developer & SEO",
         description:
             "Sinan MC is the best digital marketer in Kerala and freelance web developer. Providing Google SEO rankings, fast Next.js websites, and high-ROI digital marketing.",
         siteName: "Sinan MC",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Best Digital Marketer in Kerala | Web Developer & SEO — Sinan MC",
+        title: "Sinan MC | Best Digital Marketer in Kerala | Web Developer & SEO",
         description:
             "Sinan MC is the best digital marketer in Kerala and freelance web developer. Providing Google SEO rankings, fast Next.js websites, and high-ROI digital marketing.",
         creator: "@mc_sinan3229",
