@@ -216,6 +216,7 @@ export const portfolioProjects: Project[] = [
             "Boosted social media user engagement"
         ],
         technologies: ["Adobe Photoshop", "Graphic Design", "Social Media Marketing"],
+        link: "https://www.behance.net/sinan_mc_malappuram",
         screenshots: [
             "/social-media-poster-1.webp",
             "/social-media-poster-2.webp",

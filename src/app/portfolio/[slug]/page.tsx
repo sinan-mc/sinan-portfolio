@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { portfolioProjects } from "@/data/portfolio";
+import BehanceIcon from "@/components/ui/BehanceIcon";
 
 // SEO Optimization: generateMetadata
 export async function generateMetadata({
@@ -101,10 +102,17 @@ export default async function ProjectDetail({
                             href={project.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="mt-4 inline-flex items-center px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-primary text-dark font-bold hover:bg-primary/90 transition-all duration-300 shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:shadow-[0_0_30px_rgba(255,215,0,0.5)] hover:-translate-y-1 text-sm sm:text-base"
+                            className="mt-4 inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-primary text-dark font-bold hover:bg-primary/90 transition-all duration-300 shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:shadow-[0_0_30px_rgba(255,215,0,0.5)] hover:-translate-y-1 text-sm sm:text-base"
                         >
-                            Visit Live Website
-                            <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            {project.link.includes("behance") ? (
+                                <>
+                                    <BehanceIcon size={18} />
+                                    <span>View on Behance</span>
+                                </>
+                            ) : (
+                                <span>Visit Live Website</span>
+                            )}
+                            <svg className="w-5 h-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
                         </a>

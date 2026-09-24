@@ -19,7 +19,9 @@ import {
     Twitter,
     ExternalLink,
     ChevronDown,
+    MapPin,
 } from "lucide-react";
+import BehanceIcon from "@/components/ui/BehanceIcon";
 
 // Conversion tracking helper for Google Ads / GA4
 function trackConversion(eventName: string, params?: Record<string, unknown>) {
@@ -36,55 +38,55 @@ function trackConversion(eventName: string, params?: Record<string, unknown>) {
     }
 }
 
-// 6 Core Services with Editorial Hierarchy & Topical Depth
+// 6 Core Services with Editorial Hierarchy & Human Practical Focus
 const services = [
     {
         number: "01",
         title: "Web Design & Development",
-        tagline: "High-performance websites engineered for business conversions.",
+        tagline: "Clean, lightning-fast websites built for real customer enquiries.",
         description:
-            "Custom, fast-loading, mobile-first websites built with Next.js and clean architecture. Engineered for Core Web Vitals, accessible UX, responsive layouts across devices, and structured conversion paths that turn organic visits into direct inquiries.",
-        deliverables: ["Next.js & React", "Core Web Vitals", "Mobile-First UX", "Conversion Paths"],
+            "Custom websites built with Next.js and clean code. Designed mobile-first so your visitors have a smooth experience on their phones, and structured to guide people into calling or messaging your business on WhatsApp directly.",
+        deliverables: ["Next.js & React", "Fast Mobile UX", "WhatsApp Integration", "Google-Ready Code"],
     },
     {
         number: "02",
         title: "Search Engine Optimization (SEO)",
-        tagline: "Sustainable organic visibility for high-intent search terms.",
+        tagline: "Get found on Google when customers search for your services in Kerala.",
         description:
-            "Comprehensive technical SEO audits, localized search optimization for Kerala businesses, and on-page keyword architecture. Configured with structured JSON-LD schema and Google Search Console indexing to build lasting organic Google rankings.",
-        deliverables: ["Technical SEO Audits", "Local Kerala SEO", "Google Search Console", "Structured Schema"],
+            "Technical SEO audits, Google Business Profile optimization for Kerala districts, and clean keyword structure. I set up Google Search Console and structured schema so your website steadily climbs local search rankings.",
+        deliverables: ["Google Search Console", "Local Kerala SEO", "Keyword Research", "Speed & Schema"],
     },
     {
         number: "03",
-        title: "Digital Marketing",
-        tagline: "Performance-focused campaigns built for measurable ROI.",
+        title: "Digital Marketing & Google Ads",
+        tagline: "Targeted campaigns focused on real enquiries, not wasted ad spend.",
         description:
-            "Targeted Google Ads (PPC) and search intent funnels tailored to capture prospective customers actively searching for your services. No vanity metrics—every campaign focuses strictly on qualified inquiries, relevant clicks, and transparent acquisition costs.",
-        deliverables: ["Google Ads / PPC", "Search Intent Funnels", "Conversion Tracking", "Lead Generation"],
+            "High-intent Google Ads (PPC) and search funnels that connect with customers who are ready to buy or hire. No vanity metrics or confusing reports—every campaign is tracked for real phone calls, form fills, and clear ROI.",
+        deliverables: ["Google Ads / PPC", "Lead Generation", "Call & Chat Tracking", "Budget Management"],
     },
     {
         number: "04",
         title: "Social Media Marketing",
-        tagline: "Strategic brand authority across Instagram and Facebook.",
+        tagline: "Authentic brand presence across Instagram and Facebook.",
         description:
-            "Consistent social presence combining content strategy, professional visual communication, and audience engagement across Instagram and Facebook to build brand credibility and support your organic conversion pipeline.",
-        deliverables: ["Content Strategy", "Instagram & Facebook", "Social Creatives", "Brand Authority"],
+            "Consistent social media content and creative campaigns that build local trust. We highlight your real work, engage your audience, and turn followers into paying customers across Kerala and the GCC.",
+        deliverables: ["Content Strategy", "Instagram & Facebook", "Creative Posts & Reels", "Audience Growth"],
     },
     {
         number: "05",
         title: "Graphic & Poster Design",
-        tagline: "Editorial promotional creatives with crisp visual hierarchy.",
+        tagline: "Crisp marketing creatives designed in Photoshop for feeds and print.",
         description:
-            "High-impact marketing creatives, digital advertising banners, and promotional posters designed with disciplined typography, balanced whitespace, and purposeful visual weight crafted in Photoshop to attract attention.",
-        deliverables: ["Ad Visuals", "Promotional Posters", "Social Assets", "Print & Display Formats"],
+            "Eye-catching digital banners, event posters, and promotional social graphics crafted in Photoshop. Balanced layouts and readable typography that grab attention in busy feeds and look sharp in print.",
+        deliverables: ["Ad Visuals", "Promotional Posters", "Social Media Creatives", "Print-Ready Formats"],
     },
     {
         number: "06",
-        title: "Branding & Creative Design",
-        tagline: "Cohesive visual identity that commands market trust.",
+        title: "Branding & Visual Identity",
+        tagline: "Memorable logos and visual identity that make your business look established.",
         description:
-            "Distinct digital identities that give your business authority. Comprehensive brand guidelines, logo systems, typographic styling, and cohesive design tokens applied consistently across every digital touchpoint.",
-        deliverables: ["Brand Identity Systems", "Logo Mark & Typography", "Visual Guidelines", "Digital Design Assets"],
+            "Clean brand identity and logo design that make your business look professional from day one. Includes consistent color palettes, typography, and design assets that look great on your website, cards, and packaging.",
+        deliverables: ["Logo Design", "Color & Typography", "Brand Guidelines", "Social Profile Kits"],
     },
 ];
 
@@ -92,27 +94,27 @@ const services = [
 const editorialPillars = [
     {
         number: "01",
-        title: "Direct communication",
+        title: "Direct communication with the creator",
         description:
-            "You collaborate directly with me from day one through launch. No junior hand-offs, no account managers, and no diluted communication.",
+            "You talk directly with me from day one until launch. No junior interns, no account managers, and no miscommunication.",
     },
     {
         number: "02",
-        title: "Modern development",
+        title: "Fast, modern web engineering",
         description:
-            "Clean, lightweight code built on modern web standards and Next.js. Fast load times, accessible interfaces, and zero technical bloat.",
+            "Clean Next.js code with zero clutter. Your website loads in under a second on mobile data, keeping visitors engaged.",
     },
     {
         number: "03",
-        title: "Performance-focused execution",
+        title: "Practical business focus",
         description:
-            "Every layout, heading, and campaign decision is grounded in real commercial outcomes: search visibility, trust building, and qualified inquiries.",
+            "Every heading, layout choice, and ad campaign is built around one clear goal: helping you gain genuine customer enquiries and calls.",
     },
     {
         number: "04",
-        title: "Strategy + design + code aligned",
+        title: "Strategy, design & code under one roof",
         description:
-            "A unified workflow where visual design, search intent, and technical implementation are conceived together with a single clear direction.",
+            "I design the layout, write the code, and optimize the SEO myself. Everything works together seamlessly without disconnects.",
     },
 ];
 
@@ -120,52 +122,89 @@ const editorialPillars = [
 const processSteps = [
     {
         number: "01",
-        title: "Understand",
-        description: "We analyze your business model, target audience, competitive landscape, and specific commercial targets.",
+        title: "Discovery & Goal Setting",
+        description: "We discuss your business, who your ideal customers are, what they search for, and what you want to achieve.",
     },
     {
         number: "02",
-        title: "Plan",
-        description: "We map the digital strategy, conversion architecture, SEO keyword targets, and design requirements.",
+        title: "Roadmap & Structure",
+        description: "We plan the website layout, key pages, Google SEO target keywords, and marketing timeline.",
     },
     {
         number: "03",
-        title: "Build",
-        description: "I design, code, and optimize your digital assets with obsessive attention to typography, speed, and responsiveness.",
+        title: "Design & Development",
+        description: "I build the website and marketing creatives, testing load speed, mobile layout, and enquiry forms thoroughly.",
     },
     {
         number: "04",
-        title: "Improve",
-        description: "We monitor performance metrics, analyze real user inquiries, and iterate to strengthen long-term visibility.",
+        title: "Launch & Growth",
+        description: "We launch with Google indexing and search tracking enabled, monitoring real customer enquiries and refining performance.",
     },
 ];
 
-// FAQ Items matching Schema
+// FAQ Items matching Schema & High-Intent Search Queries
 const faqs = [
+    {
+        question: "How do I choose the best digital marketer in Kerala for my business?",
+        answer:
+            "Look for a specialist who shows real client case studies, verifiable Google rankings, and can handle both technical execution (fast website, on-page SEO) and marketing strategy (Google Ads, content). Choosing an independent specialist gives you direct communication, honest feedback, and hands-on accountability without bloated agency fees.",
+    },
     {
         question: "What does a digital marketer in Kerala do for a business?",
         answer:
-            "A digital marketer helps businesses establish search visibility and gain customers through web design, search engine optimization (SEO), Google Ads campaigns, and social media marketing tailored to their target market.",
+            "A digital marketer helps your business get found by customers actively searching for what you offer. That includes ranking your website on Google search (SEO), setting up your Google Business Profile for local map pack visibility, running targeted Google Ads, and building fast websites that turn visitors into calls and WhatsApp chats.",
     },
     {
-        question: "Do you provide SEO services for businesses in Kerala?",
+        question: "Can you build my website and handle digital marketing together?",
         answer:
-            "Yes. I provide comprehensive search engine optimization services including technical SEO audits, on-page optimization, local SEO for Kerala cities, Google Search Console indexing, and organic keyword ranking strategies.",
+            "Yes, and that is actually the most effective way. When the same person codes your website and manages your SEO and marketing, there is zero disconnect. The site is built from day one to load in under a second on phones, with clean SEO structure that Google easily understands and ranks.",
     },
     {
-        question: "Can you build a website and handle digital marketing together?",
+        question: "Do you work with businesses outside Kerala or in the GCC?",
         answer:
-            "Yes. Combining Next.js web development with SEO and digital marketing ensures your website is architected from the ground up for fast load speeds, Core Web Vitals compliance, and high search engine conversion rates.",
+            "Yes. While physically based in Tirur, Malappuram, I regularly collaborate with businesses across Kerala, other Indian states, and clients in the UAE / GCC. Everything is handled smoothly through WhatsApp, video calls, and regular progress updates.",
     },
     {
-        question: "Do you work with businesses outside Kerala?",
+        question: "How long does it take to see results from SEO and a new website?",
         answer:
-            "Yes. While based in Malappuram, Kerala, I work with businesses across India and international clients, managing digital marketing, SEO, and website projects remotely with transparent communication.",
+            "A custom website is typically designed, coded, and launched within 2 to 3 weeks. For SEO, technical indexing and Google Search Console visibility take shape within a few weeks, while competitive organic keywords and local enquiries steadily build momentum over 2 to 4 months.",
+    },
+];
+
+// Featured Guides & Articles on SEO, Web Development and Digital Growth
+const featuredBlogs = [
+    {
+        title: "Local SEO Guide 2026 – How to Rank Your Business in Malappuram",
+        slug: "local-seo-malappuram",
+        category: "Local SEO",
+        readTime: "6 min read",
+        excerpt:
+            "A step-by-step blueprint on local keyword targeting, Google Business Profile (GBP) dominance, citations, and map pack rankings for Kerala businesses.",
+        featuredImage: "/local-seo-malappuram.webp",
+        imageAlt: "Local SEO Guide for Malappuram Businesses by Sinan MC Malappuram",
+        date: "Feb 25, 2026",
     },
     {
-        question: "How long does SEO or a website project usually take?",
-        answer:
-            "A custom website development project typically takes 2 to 4 weeks depending on scope. Search engine optimization is an ongoing process where initial indexing and keyword improvements appear within weeks, with compounding organic growth over 3 to 6 months.",
+        title: "How to Choose the Best Freelance Web Developer in Malappuram",
+        slug: "choose-web-developer-malappuram",
+        category: "Web Development",
+        readTime: "7 min read",
+        excerpt:
+            "Critical criteria to demand when evaluating and hiring your next web developer to protect your investment, ensure page speed, and drive conversions.",
+        featuredImage: "/choose-web-developer-malappuram.webp",
+        imageAlt: "How to Choose the Best Freelance Web Developer in Malappuram by Sinan MC Malappuram",
+        date: "Feb 25, 2026",
+    },
+    {
+        title: "Website Speed Optimisation Guide – Improve Google Ranking",
+        slug: "website-speed-seo",
+        category: "Technical SEO",
+        readTime: "8 min read",
+        excerpt:
+            "Why sub-second page speed and Core Web Vitals directly dictate your Google search rankings, with actionable technical optimization techniques.",
+        featuredImage: "/website-speed-seo.webp",
+        imageAlt: "Website Speed Optimisation Guide by Sinan MC Malappuram Best Freelance Web Developer in Malappuram",
+        date: "Feb 25, 2026",
     },
 ];
 
@@ -254,7 +293,7 @@ export default function LandingClient() {
                     {/* Desktop Navigation Links */}
                     <nav
                         aria-label="Landing Page Navigation"
-                        className="hidden md:flex items-center gap-8 text-xs sm:text-sm font-medium text-[#5F6368]"
+                        className="hidden md:flex items-center gap-7 text-xs sm:text-sm font-medium text-[#5F6368]"
                     >
                         <a href="#services" className="hover:text-[#111111] transition-colors">
                             Services
@@ -265,8 +304,14 @@ export default function LandingClient() {
                         <a href="#about" className="hover:text-[#111111] transition-colors">
                             About
                         </a>
+                        <a href="#articles" className="hover:text-[#111111] transition-colors">
+                            Articles
+                        </a>
                         <a href="#faq" className="hover:text-[#111111] transition-colors">
                             FAQ
+                        </a>
+                        <a href="#location" className="hover:text-[#111111] transition-colors">
+                            Location
                         </a>
                         <a href="#contact" className="hover:text-[#111111] transition-colors">
                             Contact
@@ -318,11 +363,25 @@ export default function LandingClient() {
                             About
                         </a>
                         <a
+                            href="#articles"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="text-sm font-medium text-[#5F6368] hover:text-[#111111] py-1 transition-colors"
+                        >
+                            Articles
+                        </a>
+                        <a
                             href="#faq"
                             onClick={() => setMobileMenuOpen(false)}
                             className="text-sm font-medium text-[#5F6368] hover:text-[#111111] py-1 transition-colors"
                         >
                             FAQ
+                        </a>
+                        <a
+                            href="#location"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="text-sm font-medium text-[#5F6368] hover:text-[#111111] py-1 transition-colors"
+                        >
+                            Location
                         </a>
                         <a
                             href="#contact"
@@ -355,17 +414,17 @@ export default function LandingClient() {
                                 {/* Small Eyebrow with subtle brand dot */}
                                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FFFFFF] border border-[#E8E8E5] text-[11px] sm:text-xs font-semibold tracking-wider text-[#5F6368] uppercase mb-6 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
                                     <span className="w-1.5 h-1.5 rounded-full bg-[#FFD700]" />
-                                    <span>DIGITAL MARKETING · SEO · WEB DEVELOPMENT · KERALA</span>
+                                    <span>INDEPENDENT SPECIALIST · MALAPPURAM, KERALA</span>
                                 </div>
 
                                 {/* Semantic Editorial H1 */}
                                 <h1 className="text-3xl sm:text-5xl lg:text-[50px] font-bold text-[#111111] leading-[1.14] tracking-tight mb-6">
-                                    Digital Marketing &amp; Web Development for Kerala Businesses
+                                    Best Digital Marketer in Kerala &amp; Web Developer
                                 </h1>
 
-                                {/* Supporting Copy — establishes core identity within ~100 words */}
+                                {/* Supporting Copy — establishes core identity & human tone */}
                                 <p className="text-base sm:text-lg text-[#5F6368] leading-relaxed max-w-xl mb-8">
-                                    Sinan MC is an independent digital marketer and web developer in Kerala, helping businesses improve search visibility, build high-performance websites and generate meaningful enquiries.
+                                    Hi, I&apos;m Sinan MC — an independent digital marketer and web developer based in Malappuram, Kerala. I work directly with business owners to build fast, modern websites, improve Google search rankings, and run marketing campaigns that generate genuine customer calls and enquiries.
                                 </p>
 
                                 {/* Action Buttons */}
@@ -388,7 +447,7 @@ export default function LandingClient() {
                                 {/* Trust Statement */}
                                 <div className="flex items-center gap-2.5 text-xs text-[#5F6368]">
                                     <span className="w-1.5 h-1.5 rounded-full bg-[#111111]/40" />
-                                    <span>Independent Specialist · Strategy, Design &amp; Code · Malappuram, Kerala</span>
+                                    <span>Independent Specialist · Strategy, Design &amp; Code · Tirur, Malappuram, Kerala</span>
                                 </div>
                             </div>
 
@@ -586,14 +645,14 @@ export default function LandingClient() {
                                                     <strong className="text-[#111111] font-semibold">Challenge:</strong> A healthcare counseling clinic needed an approachable, fast-loading digital touchpoint to replace fragmented communication.
                                                 </p>
                                                 <p>
-                                                    <strong className="text-[#111111] font-semibold">Solution:</strong> Designed and developed a responsive Next.js website with empathetic layout hierarchy, intuitive appointment enquiry pathways, and local SEO structure.
+                                                    <strong className="text-[#111111] font-semibold">Solution:</strong> Designed and developed a responsive WordPress website with empathetic layout hierarchy, intuitive appointment enquiry pathways, and local SEO structure.
                                                 </p>
                                                 <p>
                                                     <strong className="text-[#111111] font-semibold">Outcome:</strong> Sub-second loading speeds, improved mobile navigation, and seamless direct consultation enquiries.
                                                 </p>
                                             </div>
                                             <div className="flex flex-wrap gap-1.5 mb-8">
-                                                {["Next.js", "Responsive UX", "Local SEO", "Fast PageSpeed"].map((t) => (
+                                                {["WordPress", "Responsive UX", "Local SEO", "Fast PageSpeed"].map((t) => (
                                                     <span
                                                         key={t}
                                                         className="text-[11px] font-medium text-[#5F6368] bg-[#FAFAF8] px-2.5 py-0.5 rounded border border-[#E8E8E5]"
@@ -819,8 +878,8 @@ export default function LandingClient() {
                     </div>
                 </section>
 
-                {/* ── 7. SEO POSITIONING (EDITORIAL PERSPECTIVE) ── */}
-                <section className="py-20 sm:py-24 border-b border-[#E8E8E5]" aria-label="SEO Positioning">
+                {/* ── 7. PERSPECTIVE: HOW EVERYTHING CONNECTS ── */}
+                <section className="py-20 sm:py-24 border-b border-[#E8E8E5]" aria-label="Perspective">
                     <div className="max-w-6xl mx-auto px-5 sm:px-8">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
                             {/* Left: Large Editorial Statement */}
@@ -829,31 +888,108 @@ export default function LandingClient() {
                                     Perspective
                                 </span>
                                 <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#111111] tracking-tight leading-tight">
-                                    Digital Marketing That Connects Visibility With Real Business Goals.
+                                    No Buzzwords. Just Honest Digital Work That Brings In Real Clients.
                                 </h2>
                             </div>
 
-                            {/* Right: Clean, Natural Paragraphs explaining how channels interact */}
+                            {/* Right: Clean, Natural, Human Paragraphs */}
                             <div className="lg:col-span-7 space-y-4 text-xs sm:text-sm text-[#5F6368] leading-relaxed">
                                 <p>
-                                    People searching for the{" "}
+                                    When business owners search for the{" "}
                                     <strong className="font-semibold text-[#111111]">
                                         best digital marketer in Kerala
-                                    </strong>{" "}
-                                    are usually comparing experience, communication, technical capability and real project work. The right choice is not simply the person making the biggest claim; it is the professional who can connect strategy with execution.
+                                    </strong>, they aren&apos;t looking for complicated corporate presentations or empty promises. They want someone reliable who understands local consumer behavior, builds clean websites, and delivers steady enquiries.
                                 </p>
                                 <p>
-                                    A visually attractive website delivers little value if prospective clients cannot find it on Google, while driving paid traffic to a sluggish, poorly structured page simply wastes ad budget. Search engine optimization provides compounding organic discoverability, modern Next.js development ensures high-speed user conversion, and targeted Google Ads capture immediate high-intent customer demand.
+                                    A beautiful website doesn&apos;t help your business if nobody finds it on Google. On the other hand, spending hard-earned money on Google Ads or Instagram promotions is pointless if your website takes 6 seconds to load or lacks a quick WhatsApp button. That is why I connect web engineering, Google SEO, and paid campaigns as one single engine.
                                 </p>
                                 <p>
-                                    When supported by consistent social media branding across Instagram and Facebook, these elements work together as an integrated acquisition system. As an independent digital marketer in Kerala, I implement each of these components directly—ensuring technical precision, transparent metrics, and alignment with your genuine commercial goals.
+                                    Because you work directly with me, you never get passed to an intern. You get clear timelines, transparent advice on where your marketing money is best spent, and a dedicated partner focused on helping your business grow across Kerala, India, and abroad.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* ── 8. COMPACT EDITORIAL FAQ SECTION ── */}
+                {/* ── 8. ARTICLES ON SEO & WEB GROWTH (BLOGS) ── */}
+                <section id="articles" className="py-20 sm:py-28 border-b border-[#E8E8E5] bg-[#FFFFFF]" aria-label="SEO and Web Development Articles">
+                    <div className="max-w-6xl mx-auto px-5 sm:px-8">
+                        {/* Section Header */}
+                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+                            <div className="max-w-2xl">
+                                <span className="text-xs font-semibold tracking-wider text-[#5F6368] uppercase block mb-2">
+                                    Knowledge Base &amp; Guides
+                                </span>
+                                <h2 className="text-2xl sm:text-4xl font-bold text-[#111111] tracking-tight">
+                                    Articles on SEO &amp; Digital Growth
+                                </h2>
+                                <p className="text-sm sm:text-base text-[#5F6368] mt-3 leading-relaxed">
+                                    Actionable guides on search engine optimization, website performance, local Kerala ranking strategies, and digital customer acquisition.
+                                </p>
+                            </div>
+                            <Link
+                                href="/blog"
+                                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#111111] hover:text-black shrink-0 group/all hover:underline"
+                            >
+                                <span>Browse all guides</span>
+                                <ArrowRight size={14} className="group-hover/all:translate-x-0.5 transition-transform" />
+                            </Link>
+                        </div>
+
+                        {/* 3-Column Editorial Blog Cards */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {featuredBlogs.map((post) => (
+                                <article
+                                    key={post.slug}
+                                    className="group rounded-xl border border-[#E8E8E5] bg-[#FAFAF8] overflow-hidden flex flex-col hover:border-[#111111]/30 hover:shadow-sm transition-all duration-300"
+                                >
+                                    <Link href={`/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden bg-[#F0EFEA]">
+                                        <Image
+                                            src={post.featuredImage}
+                                            alt={post.imageAlt}
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                                            sizes="(max-width: 768px) 100vw, 33vw"
+                                        />
+                                        <div className="absolute top-3 left-3 bg-[#FFFFFF]/90 backdrop-blur-md px-2.5 py-1 rounded text-[10px] font-semibold uppercase tracking-wider text-[#111111] border border-[#E8E8E5]/80 shadow-xs">
+                                            {post.category}
+                                        </div>
+                                    </Link>
+
+                                    <div className="p-6 flex flex-col flex-1">
+                                        <div className="flex items-center gap-2 text-[11px] text-[#5F6368] mb-2.5">
+                                            <span>{post.date}</span>
+                                            <span>·</span>
+                                            <span>{post.readTime}</span>
+                                        </div>
+
+                                        <h3 className="text-base font-bold text-[#111111] leading-snug mb-2.5 group-hover:underline">
+                                            <Link href={`/blog/${post.slug}`}>
+                                                {post.title}
+                                            </Link>
+                                        </h3>
+
+                                        <p className="text-xs sm:text-sm text-[#5F6368] leading-relaxed line-clamp-3 mb-6 flex-1">
+                                            {post.excerpt}
+                                        </p>
+
+                                        <div className="pt-4 border-t border-[#E8E8E5]">
+                                            <Link
+                                                href={`/blog/${post.slug}`}
+                                                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#111111] group-hover:text-black group/link"
+                                            >
+                                                <span>Read Full Guide</span>
+                                                <ArrowRight size={13} className="group-hover/link:translate-x-0.5 transition-transform" />
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* ── 9. COMPACT EDITORIAL FAQ SECTION ── */}
                 <section id="faq" className="py-20 sm:py-28 border-b border-[#E8E8E5]" aria-label="Frequently Asked Questions">
                     <div className="max-w-4xl mx-auto px-5 sm:px-8">
                         {/* Section Header */}
@@ -1143,6 +1279,109 @@ export default function LandingClient() {
                     </div>
                 </section>
 
+                {/* ── 10. LOCATION & REGIONAL REACH (LARGE MINIMAL SECTION) ── */}
+                <section id="location" className="py-20 sm:py-28 border-b border-[#E8E8E5] bg-[#FAFAF8]" aria-label="Office Location and Service Area">
+                    <div className="max-w-6xl mx-auto px-5 sm:px-8">
+                        {/* Section Header */}
+                        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
+                            <div className="max-w-2xl">
+                                <span className="text-xs font-semibold tracking-wider text-[#5F6368] uppercase block mb-2">
+                                    Location
+                                </span>
+                                <h2 className="text-2xl sm:text-4xl font-bold text-[#111111] tracking-tight">
+                                    Office Location &amp; Regional Reach
+                                </h2>
+                                <p className="text-sm sm:text-base text-[#5F6368] mt-3 leading-relaxed">
+                                    Based in Tirur, Malappuram — available for in-person project consultations locally and delivering digital marketing and web development services across Kerala.
+                                </p>
+                            </div>
+                            <div className="shrink-0">
+                                <a
+                                    href="https://maps.google.com/?cid=12386860007802871169"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#111111] text-white text-xs sm:text-sm font-semibold hover:bg-black transition-colors"
+                                >
+                                    <span>Get Directions</span>
+                                    <ExternalLink size={13} />
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* Location Details Grid */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 text-xs sm:text-sm">
+                            <div className="p-5 rounded-xl border border-[#E8E8E5] bg-[#FFFFFF]">
+                                <span className="text-[10px] uppercase font-semibold text-[#5F6368] block mb-1.5">
+                                    Address
+                                </span>
+                                <p className="font-bold text-[#111111]">Sinan MC Malappuram</p>
+                                <p className="text-[#5F6368] text-xs mt-0.5">Tirur, Malappuram, Kerala — 676101</p>
+                            </div>
+
+                            <div className="p-5 rounded-xl border border-[#E8E8E5] bg-[#FFFFFF]">
+                                <span className="text-[10px] uppercase font-semibold text-[#5F6368] block mb-1.5">
+                                    Office Hours
+                                </span>
+                                <p className="font-bold text-[#111111]">Monday – Saturday</p>
+                                <p className="text-[#5F6368] text-xs mt-0.5">9:00 AM – 7:00 PM IST</p>
+                            </div>
+
+                            <div className="p-5 rounded-xl border border-[#E8E8E5] bg-[#FFFFFF]">
+                                <span className="text-[10px] uppercase font-semibold text-[#5F6368] block mb-1.5">
+                                    Direct Contact
+                                </span>
+                                <p className="font-bold text-[#111111]">+91 7510 477 475</p>
+                                <p className="text-[#5F6368] text-xs mt-0.5">Calls &amp; WhatsApp</p>
+                            </div>
+
+                            <div className="p-5 rounded-xl border border-[#E8E8E5] bg-[#FFFFFF]">
+                                <span className="text-[10px] uppercase font-semibold text-[#5F6368] block mb-1.5">
+                                    Service Coverage
+                                </span>
+                                <p className="font-bold text-[#111111]">Kerala &amp; Global</p>
+                                <p className="text-[#5F6368] text-xs mt-0.5">In-Person &amp; Remote</p>
+                            </div>
+                        </div>
+
+                        {/* Large Full-Width Google Map Embed */}
+                        <div className="w-full h-[400px] sm:h-[480px] md:h-[520px] rounded-xl overflow-hidden border border-[#E8E8E5] bg-[#FFFFFF] shadow-sm">
+                            <iframe
+                                title="Sinan MC Malappuram Location Map"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.9120617161384!2d76.0291969!3d10.8942876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7b794ff271cc7%3A0xabe6bb1d5fe43d81!2sSinan%20MC%20Malappuram!5e0!3m2!1sen!2sin!4v1772195714648!5m2!1sen!2sin"
+                                className="w-full h-full border-0"
+                                loading="lazy"
+                                allowFullScreen
+                                referrerPolicy="no-referrer-when-downgrade"
+                            />
+                        </div>
+
+                        {/* Regional Service Areas & SEO Footprint */}
+                        <div className="mt-8 pt-6 border-t border-[#E8E8E5] flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs text-[#5F6368]">
+                            <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                                <span className="font-semibold text-[#111111]">Regional Focus:</span>
+                                <span>Malappuram</span>
+                                <span>·</span>
+                                <span>Tirur</span>
+                                <span>·</span>
+                                <span>Kozhikode (Calicut)</span>
+                                <span>·</span>
+                                <span>Kochi (Ernakulam)</span>
+                                <span>·</span>
+                                <span>Kannur</span>
+                                <span>·</span>
+                                <span>Thrissur</span>
+                                <span>·</span>
+                                <span>Kottakkal</span>
+                                <span>·</span>
+                                <span>All Kerala Districts</span>
+                            </div>
+                            <span className="text-[11px]">
+                                Remote project delivery across India &amp; GCC / UAE
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
                 {/* ── 10. FINAL CALL TO ACTION ── */}
                 <section className="py-20 sm:py-28 border-b border-[#E8E8E5] text-center" aria-label="Final Call to Action">
                     <div className="max-w-3xl mx-auto px-5 sm:px-8">
@@ -1203,6 +1442,15 @@ export default function LandingClient() {
                             className="p-1 text-[#5F6368] hover:text-[#111111] transition-colors"
                         >
                             <Linkedin size={16} />
+                        </a>
+                        <a
+                            href="https://www.behance.net/sinan_mc_malappuram"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Sinan MC on Behance"
+                            className="p-1 text-[#5F6368] hover:text-[#0057FF] transition-colors"
+                        >
+                            <BehanceIcon size={16} />
                         </a>
                         <a
                             href="https://www.facebook.com/share/1KaYZRrGny/"

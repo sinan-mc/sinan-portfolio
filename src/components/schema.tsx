@@ -12,7 +12,8 @@ export default function Schema() {
         sameAs: [
             "https://www.linkedin.com/in/sinanmc",
             "https://github.com/sinanmc",
-            "https://instagram.com/sinanmc"
+            "https://instagram.com/sinanmc",
+            "https://www.behance.net/sinan_mc_malappuram"
         ]
     };
 

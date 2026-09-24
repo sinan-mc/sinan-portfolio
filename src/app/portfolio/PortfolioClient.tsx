@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { m, LazyMotion, domAnimation, AnimatePresence, Variants } from "framer-motion";
 import { portfolioProjects, ProjectCategory } from "@/data/portfolio";
+import BehanceIcon from "@/components/ui/BehanceIcon";
 
 const categories: ("All" | ProjectCategory)[] = [
     "All",
@@ -83,6 +84,26 @@ export default function PortfolioClient() {
                         <p className="text-gray-400 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed mt-4 sm:mt-6 font-medium">
                             Explore a curated showcase of real client projects, high-ranking SEO results, futuristic AI automation systems, and high-converting websites.
                         </p>
+
+                        <div className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3">
+                            <a
+                                href="https://www.behance.net/sinan_mc_malappuram"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-[#0057FF]/15 border border-[#0057FF]/40 text-[#4D8CFF] hover:bg-[#0057FF] hover:text-white transition-all duration-300 text-xs sm:text-sm font-semibold shadow-[0_0_25px_rgba(0,87,255,0.2)] hover:shadow-[0_0_35px_rgba(0,87,255,0.5)] hover:scale-105 active:scale-95 group"
+                            >
+                                <BehanceIcon size={18} className="text-[#0057FF] group-hover:text-white transition-colors" />
+                                <span>Explore Behance Design Portfolio</span>
+                                <svg
+                                    className="w-4 h-4 ml-0.5 transform transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
                     </m.div>
                 </section>
 
@@ -166,19 +187,33 @@ export default function PortfolioClient() {
                                             {project.shortDescription}
                                         </p>
 
-                                        <Link href={`/portfolio/${project.id}`} className="mt-auto inline-flex items-center group/btn">
-                                            <span className="flex items-center justify-center w-full px-6 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-primary hover:text-dark hover:border-primary text-primary font-semibold transition-all duration-300 overflow-hidden relative">
-                                                <span className="relative z-10 flex items-center">
-                                                    View Case Study
-                                                    <svg
-                                                        className="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
-                                                        fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                                    >
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                                    </svg>
+                                        <div className="mt-auto flex items-center gap-3">
+                                            <Link href={`/portfolio/${project.id}`} className="flex-1 inline-flex items-center group/btn">
+                                                <span className="flex items-center justify-center w-full px-6 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-primary hover:text-dark hover:border-primary text-primary font-semibold transition-all duration-300 overflow-hidden relative">
+                                                    <span className="relative z-10 flex items-center text-xs sm:text-sm">
+                                                        View Case Study
+                                                        <svg
+                                                            className="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
+                                                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                        >
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                                        </svg>
+                                                    </span>
                                                 </span>
-                                            </span>
-                                        </Link>
+                                            </Link>
+                                            {project.link?.includes("behance") && (
+                                                <a
+                                                    href={project.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    aria-label="View on Behance"
+                                                    title="View on Behance"
+                                                    className="w-11 h-11 shrink-0 rounded-full bg-[#0057FF]/15 border border-[#0057FF]/40 flex items-center justify-center text-[#4D8CFF] hover:bg-[#0057FF] hover:text-white transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(0,87,255,0.2)]"
+                                                >
+                                                    <BehanceIcon size={18} />
+                                                </a>
+                                            )}
+                                        </div>
                                     </div>
 
                                     {/* Hover Glow Effect inside card */}

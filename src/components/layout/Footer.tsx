@@ -3,6 +3,7 @@
 // This removes ~50KB of Framer Motion from the footer's JS chunk.
 import Link from "next/link";
 import { Mail, MapPin, Phone, ArrowRight, Instagram, Linkedin, Facebook, Twitter, MessageCircle } from "lucide-react";
+import BehanceIcon from "@/components/ui/BehanceIcon";
 
 const jsonLd = {
     "@context": "https://schema.org",
@@ -25,6 +26,7 @@ const jsonLd = {
     "sameAs": [
         "https://www.instagram.com/sinan_mc_malappuram?igsh=Mzl5MGFhem1mY2g1",
         "https://www.linkedin.com/in/mhd-sinan-mc",
+        "https://www.behance.net/sinan_mc_malappuram",
         "https://www.facebook.com/share/1KaYZRrGny/",
         "https://x.com/mc_sinan3229"
     ]
@@ -52,6 +54,7 @@ const services = [
 const socials = [
     { Icon: Instagram, href: "https://www.instagram.com/sinan_mc_malappuram?igsh=Mzl5MGFhem1mY2g1", label: "Instagram" },
     { Icon: Linkedin, href: "https://www.linkedin.com/in/mhd-sinan-mc", label: "LinkedIn" },
+    { Icon: BehanceIcon, href: "https://www.behance.net/sinan_mc_malappuram", label: "Behance" },
     { Icon: Facebook, href: "https://www.facebook.com/share/1KaYZRrGny/", label: "Facebook" },
     { Icon: Twitter, href: "https://x.com/mc_sinan3229", label: "Twitter" },
 ];

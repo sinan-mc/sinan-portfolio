@@ -3,6 +3,7 @@
 import { m, LazyMotion, domAnimation, Variants } from "framer-motion";
 import Link from "next/link";
 import { Phone, Instagram, Linkedin, Facebook, Twitter, Mail, MapPin, Send, Loader2, CheckCircle2, MessageCircle } from "lucide-react";
+import BehanceIcon from "@/components/ui/BehanceIcon";
 import GoogleMap from "@/components/ui/GoogleMap";
 import { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
@@ -344,6 +345,10 @@ export default function ContactClient() {
                             <Link href="https://www.linkedin.com/in/mhd-sinan-mc" target="_blank" className="w-14 h-14 rounded-full bg-[#141414] border border-white/10 flex items-center justify-center text-white/70 hover:text-[#0077B5] hover:border-[#0077B5] hover:bg-[#0077B5]/10 transition-all duration-300 hover:scale-110">
                                 <Linkedin className="w-6 h-6" />
                                 <span className="sr-only">LinkedIn</span>
+                            </Link>
+                            <Link href="https://www.behance.net/sinan_mc_malappuram" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-[#141414] border border-white/10 flex items-center justify-center text-white/70 hover:text-[#0057FF] hover:border-[#0057FF] hover:bg-[#0057FF]/10 transition-all duration-300 hover:scale-110">
+                                <BehanceIcon size={24} className="w-6 h-6" />
+                                <span className="sr-only">Behance</span>
                             </Link>
                             <Link href="https://www.facebook.com/share/1KaYZRrGny/" target="_blank" className="w-14 h-14 rounded-full bg-[#141414] border border-white/10 flex items-center justify-center text-white/70 hover:text-[#1877F2] hover:border-[#1877F2] hover:bg-[#1877F2]/10 transition-all duration-300 hover:scale-110">
                                 <Facebook className="w-6 h-6" />

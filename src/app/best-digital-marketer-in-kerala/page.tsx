@@ -4,7 +4,7 @@ import LandingClient from "./LandingClient";
 export const metadata: Metadata = {
     title: "Best Digital Marketer in Kerala | Web Developer & SEO — Sinan MC",
     description:
-        "Sinan MC is an independent digital marketer and web developer in Kerala, helping businesses improve Google visibility, build modern websites and gain enquiries.",
+        "Looking for the best digital marketer in Kerala? Sinan MC builds fast modern websites, ranks businesses on Google search, and manages high-return ad campaigns.",
     alternates: {
         canonical: "https://sinanmcmalappuram.in/best-digital-marketer-in-kerala",
     },
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
         url: "https://sinanmcmalappuram.in/best-digital-marketer-in-kerala",
         title: "Best Digital Marketer in Kerala | Web Developer & SEO — Sinan MC",
         description:
-            "Sinan MC is an independent digital marketer and web developer in Kerala, helping businesses improve Google visibility, build modern websites and gain enquiries.",
+            "Looking for the best digital marketer in Kerala? Sinan MC builds fast modern websites, ranks businesses on Google search, and manages high-return ad campaigns.",
         siteName: "Sinan MC",
         locale: "en_IN",
         images: [
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
                 url: "/freelance-web-developer-SEO-specialist-Malappuram.webp",
                 width: 1200,
                 height: 630,
-                alt: "Sinan MC — Independent Digital Marketer and Web Developer in Kerala",
+                alt: "Sinan MC — Best Digital Marketer in Kerala and Web Developer",
             },
         ],
     },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Best Digital Marketer in Kerala | Web Developer & SEO — Sinan MC",
         description:
-            "Sinan MC is an independent digital marketer and web developer in Kerala, helping businesses improve Google visibility, build modern websites and gain enquiries.",
+            "Looking for the best digital marketer in Kerala? Sinan MC builds fast modern websites, ranks businesses on Google search, and manages high-return ad campaigns.",
         creator: "@mc_sinan3229",
         images: ["/freelance-web-developer-SEO-specialist-Malappuram.webp"],
     },
@@ -76,6 +76,7 @@ const personSchema = {
     sameAs: [
         "https://www.instagram.com/sinan_mc_malappuram?igsh=Mzl5MGFhem1mY2g1",
         "https://www.linkedin.com/in/mhd-sinan-mc",
+        "https://www.behance.net/sinan_mc_malappuram",
         "https://www.facebook.com/share/1KaYZRrGny/",
         "https://x.com/mc_sinan3229",
     ],
@@ -91,7 +92,7 @@ const professionalServiceSchema = {
     image: "https://sinanmcmalappuram.in/freelance-web-developer-SEO-specialist-Malappuram.webp",
     priceRange: "₹₹",
     description:
-        "High-performance website development, search engine optimization (SEO), digital marketing, and creative design services for businesses in Kerala and India.",
+        "Fast Next.js web design, Google Search SEO rankings, targeted digital marketing, and branding services for businesses across Kerala, India, and the GCC.",
     parentOrganization: {
         "@id": "https://sinanmcmalappuram.in/#person",
     },
@@ -103,7 +104,17 @@ const professionalServiceSchema = {
         addressCountry: "IN",
         postalCode: "676101",
     },
+    geo: {
+        "@type": "GeoCoordinates",
+        latitude: 10.8942876,
+        longitude: 76.0291969,
+    },
+    hasMap: "https://www.google.com/maps/place/Sinan+MC+Malappuram/@10.8942876,76.0291969,17z",
     areaServed: [
+        { "@type": "City", name: "Malappuram" },
+        { "@type": "City", name: "Tirur" },
+        { "@type": "City", name: "Kozhikode" },
+        { "@type": "City", name: "Kochi" },
         { "@type": "State", name: "Kerala" },
         { "@type": "Country", name: "India" },
     ],
@@ -160,7 +171,7 @@ const professionalServiceSchema = {
                 "@type": "Offer",
                 itemOffered: {
                     "@type": "Service",
-                    name: "Branding & Creative Design",
+                    name: "Branding & Visual Identity",
                     description:
                         "Consistent visual identity and digital brand presentation to build credibility.",
                 },
@@ -205,42 +216,42 @@ const faqSchema = {
     mainEntity: [
         {
             "@type": "Question",
+            name: "How do I choose the best digital marketer in Kerala for my business?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "Look for a specialist who shows real client case studies, verifiable Google rankings, and can handle both technical execution (fast website, on-page SEO) and marketing strategy (Google Ads, content). Choosing an independent specialist gives you direct communication, honest feedback, and hands-on accountability without bloated agency fees.",
+            },
+        },
+        {
+            "@type": "Question",
             name: "What does a digital marketer in Kerala do for a business?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "A digital marketer helps businesses establish search visibility and gain customers through web design, search engine optimization (SEO), Google Ads campaigns, and social media marketing tailored to their target market.",
+                text: "A digital marketer helps your business get found by customers actively searching for what you offer. That includes ranking your website on Google search (SEO), setting up your Google Business Profile for local map pack visibility, running targeted Google Ads, and building fast websites that turn visitors into calls and WhatsApp chats.",
             },
         },
         {
             "@type": "Question",
-            name: "Do you provide SEO services for businesses in Kerala?",
+            name: "Can you build my website and handle digital marketing together?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "Yes. I provide comprehensive search engine optimization services including technical SEO audits, on-page optimization, local SEO for Kerala cities, Google Search Console indexing, and organic keyword ranking strategies.",
+                text: "Yes, and that is actually the most effective way. When the same person codes your website and manages your SEO and marketing, there is zero disconnect. The site is built from day one to load in under a second on phones, with clean SEO structure that Google easily understands and ranks.",
             },
         },
         {
             "@type": "Question",
-            name: "Can you build a website and handle digital marketing together?",
+            name: "Do you work with businesses outside Kerala or in the GCC?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "Yes. Combining Next.js web development with SEO and digital marketing ensures your website is architected from the ground up for fast load speeds, Core Web Vitals compliance, and high search engine conversion rates.",
+                text: "Yes. While physically based in Tirur, Malappuram, I regularly collaborate with businesses across Kerala, other Indian states, and clients in the UAE / GCC. Everything is handled smoothly through WhatsApp, video calls, and regular progress updates.",
             },
         },
         {
             "@type": "Question",
-            name: "Do you work with businesses outside Kerala?",
+            name: "How long does it take to see results from SEO and a new website?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "Yes. While based in Malappuram, Kerala, I work with businesses across India and international clients, managing digital marketing, SEO, and website projects remotely with transparent communication.",
-            },
-        },
-        {
-            "@type": "Question",
-            name: "How long does SEO or a website project usually take?",
-            acceptedAnswer: {
-                "@type": "Answer",
-                text: "A custom website development project typically takes 2 to 4 weeks depending on scope. Search engine optimization is an ongoing process where initial indexing and keyword improvements appear within weeks, with compounding organic growth over 3 to 6 months.",
+                text: "A custom website is typically designed, coded, and launched within 2 to 3 weeks. For SEO, technical indexing and Google Search Console visibility take shape within a few weeks, while competitive organic keywords and local enquiries steadily build momentum over 2 to 4 months.",
             },
         },
     ],

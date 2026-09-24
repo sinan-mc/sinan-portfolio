@@ -57,6 +57,7 @@ export default function ContactPage() {
         sameAs: [
             'https://www.instagram.com/sinan_mc_malappuram?igsh=Mzl5MGFhem1mY2g1',
             'https://www.linkedin.com/in/mhd-sinan-mc',
+            'https://www.behance.net/sinan_mc_malappuram',
             'https://www.facebook.com/share/1KaYZRrGny/',
             'https://x.com/mc_sinan3229',
         ],
